@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "concurrently \"yarn workspace backend start\" \"yarn workspace frontend start\""
+  },
+  "dependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

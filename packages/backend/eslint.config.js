@@ -1,8 +1,7 @@
-import eslintPluginNode from 'eslint-plugin-node';
-import eslintPluginSecurity from 'eslint-plugin-security';
-import eslintConfigPrettier from 'eslint-config-prettier';
+const eslintPluginNode = require('eslint-plugin-node');
+const eslintConfigPrettier = require('eslint-config-prettier');
 
-export default [
+module.exports = [
   {
     ignores: ['node_modules', 'build', 'dist'],
   },
@@ -10,16 +9,19 @@ export default [
     files: ['**/*.js'],
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'module',
+      sourceType: 'commonjs',
+      globals: {
+        require: 'readonly',
+        process: 'readonly',
+        console: 'readonly',
+      },
     },
     plugins: {
       node: eslintPluginNode,
-      security: eslintPluginSecurity,
     },
     rules: {
       'node/no-unsupported-features/es-syntax': 'off',
-      'node/no-missing-import': 'off',
-      'security/detect-object-injection': 'warn',
+      'no-undef': 'error',
       ...eslintConfigPrettier.rules,
     },
   },

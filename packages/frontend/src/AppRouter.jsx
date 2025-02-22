@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import { PATH } from './constants/index.js';
 import PublicRoute from './components/PublicRoute';
+import Pokemon from './pages/Pokemon.jsx';
 
 function AppRouter() {
   return (
@@ -15,6 +16,7 @@ function AppRouter() {
         </Route>
         <Route element={<ProtectedRoute />}>
           <Route path={PATH.HOME} element={<Home />} />
+          <Route path={`${PATH.HOME}${PATH.POKEMON}`} element={<Pokemon />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

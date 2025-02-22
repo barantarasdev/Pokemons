@@ -2,11 +2,10 @@
 .spinner {
   width: 2rem;
   height: 2rem;
-  border: 0.4rem solid white;
+  border: 0.4rem solid var(--white-color);
   border-bottom-color: transparent;
   border-radius: 50%;
   display: inline-block;
-  box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
 
@@ -17,4 +16,128 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* Pokemons */
+.pokemons {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.pokemonsList {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+  padding: 3rem;
+  overflow-y: scroll;
+}
+
+.pokemonsItem {
+  min-width: 30.33%;
+  max-width: 30.33%;
+}
+
+/* Pokemon */
+.pokemon {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 2rem;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border-radius: 0.7rem;
+  transition: transform var(--primary-duration);
+}
+
+@media (max-width: 900px) {
+  .pokemon {
+    min-width: 40%;
+    max-width: 40%;
+  }
+}
+
+@media (max-width: 600px) {
+  .pokemon {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+.pokemon:hover {
+  transform: scale(1.06);
+}
+
+.pokemonWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.pokemonContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pokemonImage {
+  align-self: center;
+  width: 100px;
+}
+
+.pokemonTypes {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pokemonType {
+  padding: 0.3rem 1rem;
+  border: 1px solid var(--white-color);
+}
+
+.pokemonInfo {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pokemonInfoName {
+  font-size: 1.1rem;
+}
+
+.pokemonTypeTooltip {
+  display: inline-block;
+  position: relative;
+}
+
+.pokemonTypeTooltipText {
+  width: 14rem;
+  background-color: var(--white-color);
+  color: var(--black-color);
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transform: translateX(-50%);
+  overflow-wrap: break-word;
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.pokemonTypeTooltip:hover .pokemonTypeTooltipText {
+  visibility: visible;
+}
+
+.pokemonSpinnerWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }

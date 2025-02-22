@@ -23,11 +23,11 @@ const login = async ({ body }, res) => {
     });
 
     // Player does exist
-    const isPlayer = await isExistPlayer(address);
+    // const isPlayer = await isExistPlayer(address);
 
-    if (!isPlayer) {
-      await createPlayer({ address });
-    }
+    // if (!isPlayer) {
+    //   await createPlayer({ address });
+    // }
 
     // Send a token by httpOnly cookies
     res.cookie('token', token, {

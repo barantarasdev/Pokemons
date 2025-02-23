@@ -2,7 +2,9 @@ const { randomBytes } = require('crypto');
 
 const getNonce = () => {
   // Generate random value
-  return randomBytes(16).toString('hex');
+  const hex = randomBytes(16).toString('hex');
+
+  return `Please sign this message for authentication: ${hex}`;
 };
 
 module.exports = { getNonce };

@@ -31,6 +31,10 @@ const pokemonSchema = new Schema({
     hires: { type: String, required: true },
   },
 });
+pokemonSchema.index({ type: 1 });
+pokemonSchema.index({ 'name.english': 1 });
+pokemonSchema.index({ 'base.HP': 1, 'base.Attack': 1 });
+pokemonSchema.index({ 'image.thumbnail': 1 });
 const Pokemon = model('Pokemon', pokemonSchema);
 
 module.exports = Pokemon;

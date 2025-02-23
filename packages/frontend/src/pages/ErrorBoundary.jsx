@@ -7,7 +7,7 @@ class ErrorBoundary extends Component {
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 
@@ -18,7 +18,7 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <h1 className={styles.errorBoundaryTitle}>
+        <h1 className={styles.specificPageTitle}>
           Something went wrong. Please try again later
         </h1>
       );

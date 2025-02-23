@@ -1,50 +1,69 @@
 import styles from './styles.module.css';
 import { MAX_POKEMON_TYPES } from '../constants/index.js';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function Pokemon({
-  item: {
-    id,
-    name: { english: name },
-    type,
-    base,
-    image: { thumbnail: image },
-  },
-}) {
-  const isTypesMax = type.length > MAX_POKEMON_TYPES;
+function Pokemon({ item, isTypes = true, isAttacked }) {
+  const { id, name, type = [], base, image } = item;
+  const navigate = useNavigate();
 
-  const theLastTypes = useMemo(() => {
-    return isTypesMax ? type.slice(MAX_POKEMON_TYPES).join(',') : null;
+  const types = useMemo(() => {
+    return type.slice(0, MAX_POKEMON_TYPES);
   }, [type]);
 
+  // Tooltip for the rest types
+  const restTypes = useMemo(() => {
+    const isTypesLengthMax = type?.length > MAX_POKEMON_TYPES;
+
+    return isTypesLengthMax ? type.slice(MAX_POKEMON_TYPES).join(',') : null;
+  }, [type]);
+
+  const handleClick = useCallback(() => {
+    navigate(`/${id}`, {
+      state: {
+        currentPokemon: item,
+      },
+    });
+  }, [item, id]);
+
   return (
-    <a href={`/${id}`} className={styles.pokemon}>
+    <article
+      role="link"
+      className={`${styles.pokemon} ${isAttacked ? styles.pokemonFlash : ''}`}
+      onClick={handleClick}
+    >
       <figure className={styles.pokemonWrapper}>
-        <img className={styles.pokemonImage} src={image} alt={name} />
+        <img
+          className={styles.pokemonImage}
+          src={image?.thumbnail}
+          alt={name?.english || '-'}
+        />
 
         <figcaption className={styles.pokemonContent}>
-          <ul className={styles.pokemonTypes}>
-            {type.slice(0, MAX_POKEMON_TYPES).map((value) => (
-              <li className={styles.pokemonType} key={value}>
-                {value}
-              </li>
-            ))}
+          {isTypes ? (
+            <ul className={styles.pokemonTypes}>
+              {types.map((value) => (
+                <li className={styles.pokemonType} key={value}>
+                  {value}
+                </li>
+              ))}
 
-            {isTypesMax ? (
-              <li
-                className={`${styles.pokemonType} ${styles.pokemonTypeTooltip}`}
-              >
-                ...
-                <span className={styles.pokemonTypeTooltipText}>
-                  {theLastTypes}
-                </span>
-              </li>
-            ) : null}
-          </ul>
+              {!!restTypes?.length ? (
+                <li
+                  className={`${styles.pokemonType} ${styles.pokemonTypeTooltip}`}
+                >
+                  ...
+                  <span className={styles.pokemonTypeTooltipText}>
+                    {restTypes}
+                  </span>
+                </li>
+              ) : null}
+            </ul>
+          ) : null}
 
           <div className={styles.pokemonInfo}>
             <p className={styles.pokemonInfoName}>Name:</p>
-            <p>{name || '-'}</p>
+            <p>{name?.english || '-'}</p>
           </div>
 
           <div className={styles.pokemonInfo}>
@@ -68,7 +87,7 @@ function Pokemon({
           </div>
         </figcaption>
       </figure>
-    </a>
+    </article>
   );
 }
 

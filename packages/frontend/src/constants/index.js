@@ -11,6 +11,15 @@ export const API_ENDPOINTS = {
   POKEMONS: '/pokemons',
 };
 
+export const WS_EVENTS = {
+  ATTACK: 'attack',
+  START: 'start',
+};
+
 export const MAX_POKEMON_TYPES = 3;
 
-export const MAX_POKEMONS_LIMIT = 15;
+export const MAX_POKEMON_LIMIT = 15;
+
+export const SCROLL_TRASHLOAD = 5;
+
+export const ARENA_TIMEOUT_DURATION = 3000;

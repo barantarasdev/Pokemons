@@ -8,6 +8,7 @@ const playerSchema = new Schema({
     default: () => Date.now(),
   },
 });
+playerSchema.index({ address: 1 });
 const Player = model('Player', playerSchema);
 
 module.exports = Player;

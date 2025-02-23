@@ -1,8 +1,13 @@
 :root {
   --primary-color: #6b5577;
+  --green-color: #05d705;
   --white-color: #ffffff;
   --black-color: #000000;
+  --red-color: #e64949;
+  --disabled-color: #a5a5a5;
+
   --primary-duration: 0.2s;
+  --primary-border-radius: 0.7rem;
 }
 
 *,
@@ -23,13 +28,19 @@ body,
   height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+#root {
+  position: relative;
+}
+
 body {
   font-family: 'Futura', sans-serif;
   background-image: url('../assets/images/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  color: var(--primary-color);
-  scroll-behavior: smooth;
 }
 
 button {
@@ -48,4 +59,9 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+h1 {
+  color: var(--primary-color);
+  font-size: 3rem;
 }

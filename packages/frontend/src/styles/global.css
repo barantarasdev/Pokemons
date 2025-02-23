@@ -30,6 +30,10 @@ body,
 
 html {
   scroll-behavior: smooth;
+  background-image: url('../assets/images/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 #root {
@@ -38,9 +42,6 @@ html {
 
 body {
   font-family: 'Futura', sans-serif;
-  background-image: url('../assets/images/background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 button {

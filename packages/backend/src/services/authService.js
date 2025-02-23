@@ -38,6 +38,7 @@ class Auth {
       res.cookie('token', token, {
         httpOnly: true,
         sameSite: 'Strict',
+        secure: Boolean(process.env.NODE_ENV === 'production'),
       });
 
       return res.status(200).send({ message: 'Login successful' });
@@ -50,6 +51,8 @@ class Auth {
     try {
       res.clearCookie('token', {
         httpOnly: true,
+        sameSite: 'Strict',
+        secure: Boolean(process.env.NODE_ENV === 'production'),
       });
 
       return res.status(200).send({ message: 'Logged out successfully' });

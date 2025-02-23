@@ -1,11 +1,11 @@
-const { getBasePokemons } = require('../database');
+const { getPokemons } = require('../database');
 
 const pokemons = async (req, res) => {
   try {
     const skip = req.query.skip;
     const limit = Math.min(Math.max(Number(req.query.limit), 1), 20);
 
-    const pokemons = await getBasePokemons({ skip, limit });
+    const pokemons = await getPokemons({ skip, limit });
     const hasNext = pokemons.length === limit;
 
     return res.status(200).send({ pokemons, hasNext });

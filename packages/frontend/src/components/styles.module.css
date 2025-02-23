@@ -5,7 +5,6 @@
   border: 0.4rem solid var(--white-color);
   border-bottom-color: transparent;
   border-radius: 50%;
-  display: inline-block;
   animation: rotation 1s linear infinite;
 }
 
@@ -18,23 +17,30 @@
   }
 }
 
+/* Container */
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 1.3rem;
+}
+
 /* Pokemons */
 .pokemons {
   height: 100%;
   width: 100%;
-  overflow: hidden;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  overflow-y: scroll;
 }
 
 .pokemonsList {
-  height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 1.4rem;
-  padding: 3rem;
-  overflow-y: scroll;
 }
 
 .pokemonsItem {
@@ -42,29 +48,46 @@
   max-width: 30.33%;
 }
 
-/* Pokemon */
-.pokemon {
-  width: 100%;
-  height: 100%;
-  display: block;
-  padding: 2rem;
-  color: var(--white-color);
-  background-color: var(--primary-color);
-  border-radius: 0.7rem;
-  transition: transform var(--primary-duration);
-}
-
 @media (max-width: 900px) {
-  .pokemon {
+  .pokemonsItem {
     min-width: 40%;
     max-width: 40%;
   }
 }
 
 @media (max-width: 600px) {
-  .pokemon {
+  .pokemonsItem {
     min-width: 100%;
     max-width: 100%;
+  }
+}
+
+/* Pokemon */
+.pokemon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border-radius: var(--primary-border-radius);
+  cursor: pointer;
+  transition: transform var(--primary-duration);
+}
+
+.pokemonFlash {
+  animation: flash 1s infinite;
+}
+
+@keyframes flash {
+  0% {
+    background-color: var(--primary-color);
+  }
+  50% {
+    background-color: var(--red-color);
+  }
+  100% {
+    background-color: var(--primary-color);
   }
 }
 
@@ -75,7 +98,7 @@
 .pokemonWrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.3rem;
+  gap: 0.5rem;
 }
 
 .pokemonContent {
@@ -121,7 +144,7 @@
   color: var(--black-color);
   text-align: center;
   padding: 0.5rem;
-  border-radius: 5px;
+  border-radius: var(--primary-border-radius);
   transform: translateX(-50%);
   overflow-wrap: break-word;
   position: absolute;
@@ -135,9 +158,32 @@
   visibility: visible;
 }
 
-.pokemonSpinnerWrapper {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+/* Logs */
+.logsList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.log {
+  color: var(--white-color);
+}
+
+.logAttack {
+  color: var(--red-color);
+}
+
+/* Progress */
+.progress {
+  width: 100%;
+  height: 1.4rem;
+  background-color: var(--disabled-color);
+  border-radius: var(--primary-border-radius);
+}
+
+.progressContent {
+  height: 100%;
+  background-color: var(--red-color);
+  border-radius: var(--primary-border-radius);
 }

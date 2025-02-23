@@ -13,7 +13,7 @@ const login = async ({ body }, res) => {
     // Get an address by data
     const recoveredAddress = web3.eth.accounts.recover(nonce, signature);
 
-    if (recoveredAddress !== address) {
+    if (recoveredAddress.toLocaleLowerCase() !== address.toLocaleLowerCase()) {
       return res.status(401).send({ error: 'Address is not valid!' });
     }
 

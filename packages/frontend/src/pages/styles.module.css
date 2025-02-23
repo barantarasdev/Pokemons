@@ -1,26 +1,19 @@
 /* Auth */
 .auth {
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .authTitle {
-  font-size: 3rem;
   text-align: center;
-  color: var(--primary-color);
-}
-
-.authWrapper {
-  padding: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.8rem;
-  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .authButton {
@@ -36,33 +29,115 @@
   opacity: 0.8;
 }
 
-.authSpinner {
+.authSpinnerWrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-/* Not Found */
-.notFound {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.notFoundTitle {
-  font-size: 4rem;
-  text-align: center;
-}
-
-/* Error Boundary */
-.errorBoundaryTitle {
-  font-size: 3rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+/* Error Boundary and Not found page */
+.specificPageTitle {
   text-align: center;
   color: var(--white-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Home */
+.home {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Arena */
+.arena {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  overflow: hidden;
+  user-select: none;
+}
+
+.arenaTitle {
+  text-align: center;
+  color: var(--white-color);
+}
+
+.arenaPokemons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.arenaPokemon {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  width: 25%;
+  height: 25rem;
+  pointer-events: none;
+  position: relative;
+}
+
+.arenaPokemonTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--white-color);
+}
+
+.arenaFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.arenaLogsWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 25vh;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.arenaLogsWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.arenaAttackButton {
+  padding: 1rem 4rem;
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--white-color);
+  background-color: var(--green-color);
+  border-radius: var(--primary-border-radius);
+}
+
+.arenaDisAttackButton {
+  background-color: var(--disabled-color);
+}
+
+.arenaRobotImg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.arenaSpinnerWrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.arenaAttackButtonDis {
+  background-color: var(--disabled-color);
+  pointer-events: none;
 }

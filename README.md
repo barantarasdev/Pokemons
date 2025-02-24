@@ -39,14 +39,18 @@ METHODS=GET,POST<br>
 HEADERS=Content-Type,Authorization,credentials<br>
 IS_CREDENTIALS=true<br>
 
-### 3. Run MongoDB Locally
+### 5. Run MongoDB Locally
 
 Start MongoDB using Homebrew:
 
 `brew services start mongodb-community`
 
-### 4. Create a Test Database
+### 6. Create a Test Database
 
 - Create a new database called `Test`.
 - Create a collection named `Pokemons`.
 - Import data from the `pokedex.json` seed file in `packages/backend/src/database/seed/pokedex.json` into the `Pokemons` collection.
+
+### 7. Start the project
+
+`cd ../../ yarn start`
